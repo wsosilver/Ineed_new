@@ -1,0 +1,145 @@
+page-solicitation-list {
+  .scroll-content {
+    padding: 0px !important;
+    background-color: #ebebeb !important;
+  }
+
+
+  ion-content,
+  ion-refresher,
+  ion-refresher-content {    
+    background-color: #ebebeb !important;
+  }
+
+  #filter-info {
+    text-align: center;
+    padding-top: 10px;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+
+  .spinner {
+    width: 100%;
+    margin: 30vh auto;
+  }
+
+  .card {
+    position: relative;
+    padding: 16px;
+    border-radius: 5px;
+    color: #343434;
+    box-shadow: unset !important;
+  }
+
+  .card img {
+    display: inline-block;
+    height: 5vw;
+    width: 5vw;
+    margin-right: 4px;
+  }
+
+  .tag-category {
+    font-size: 2rem;
+    font-weight: 500;
+    display: inline-block;
+  }
+
+  .tag-service {
+    font-size: 1.0rem;
+    color: #696969;
+    display: block;
+    margin-top: 5px;
+
+    h3 {
+      font-size: 1.1rem;
+    }
+  }
+
+  .address .icon,
+  .date .icon,
+  .status .icon {
+    margin-right: 4px;
+  }
+
+  .date,
+  .address {
+    font-size: 1.6rem;
+    margin: 8px;
+    margin-left: 2px;
+    white-space: normal !important;
+  }
+
+  .status {
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .cod {
+    position: absolute;
+    top: 2.5vh;
+    right: 2.5vh;
+
+    font-size: 1.1rem;
+    padding: 3px 6px;
+    border-radius: 3px;
+    background-color: rgb(6, 182, 111);
+    color: white;
+    //box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);;
+    margin-left: 5px;
+    margin-bottom: 5px;
+    font-weight: 500;
+    border: none;
+  }
+
+  ion-infinite-scroll-content {
+    min-height: 5px;
+  }
+
+  .header-orange {
+    height: 25vh; 
+    background: color($colors, primary, base);
+    color: #fff;
+    font-size: 25px;
+    padding-top: 10vh;
+    padding-left: 15px;
+    margin-bottom: 5px;
+
+    span {
+      position: relative;
+    }
+  }
+
+  .orange-block {
+    img {
+      background: rgb(240, 240, 240);
+      width: 50px;
+      height: 50px;
+      padding: 5px;
+      float: left;
+    }
+  }
+
+  .contextwithtext {
+    margin: 0px 15px 0px 15px;
+    background-color: white;
+    margin-top: -30px;
+    z-index: 1;
+    border-radius: 5px;
+    padding: 10px;
+
+    b { 
+      ion-icon {
+        float: right;
+      }
+    }
+  }
+
+  .taskcheck {
+    ion-icon {
+      font-size: 15px;
+      margin-top: 0px;
+      margin-left: 5px;
+      position: absolute;
+    }
+  }
+}

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Avaliação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <p class="title">
+    <span>{{ solicitation.date }}</span>
+  </p>
+
+  <p class="categorie">{{ solicitation.categorie }}</p>
+
+  <p class="service-list"></p>
+
+  <p class="title">
+    <span>Detalhes da Solicitação</span>
+  </p>
+  
+  <img class="minimap" src="assets/imgs/minimap.png" />
+  <p class="address">{{ solicitation.address }}</p>
+
+  <ion-footer no-shadow>
+    <p class="title">
+      <span>Avalie o Serviço</span>
+    </p>
+    <rating [(ngModel)]="rateValue" 
+      max="5"
+      class="rating"
+      emptyStarIconName="star-outline"
+      starIconName="star"
+      nullable="false">
+    </rating>
+    <ion-toolbar position="bottom">
+        <button ion-button block (tap)="setRating()" class="rate">Avaliar</button>
+    </ion-toolbar>
+  </ion-footer>
+</ion-content>

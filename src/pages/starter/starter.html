@@ -1,0 +1,20 @@
+<ion-content padding>
+  <img class="logo" src="assets/imgs/logo.png">
+  <p class="suptitle">Bem-vindo(a)!</p>
+  <p class="hint" style="margin-top: -15px">Já é usuário do iNeed?</p>
+  <button ion-button block color="primary" (tap)="openSigninPage()">Entrar com sua conta</button>
+  <p class="text-login-options">ou</p>
+  <button ion-button block color="facebook" (tap)="openFacebookSigninPage()" class="btn-social-media">
+    <ion-icon class="facebook" name="logo-facebook"></ion-icon>
+    Entrar com Facebook
+  </button>
+
+  <div class="mini-footer" align="center">
+    <p class="hint" style="font-size: 12px; margin-left: -16px">Ainda não possui uma conta?</p>
+    <button ion-button block clear icon-start class="btn-signup" (tap)="openSignupPage()" style="margin-top: -15px; margin-left: -16px">
+      <ion-icon name="md-person" class="orange"></ion-icon>
+      <p class="orange">Criar uma conta</p>
+    </button>
+  </div>
+</ion-content>
+

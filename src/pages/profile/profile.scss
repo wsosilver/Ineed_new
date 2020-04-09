@@ -1,0 +1,99 @@
+page-profile {
+  $text-input-md-highlight-color-invalid: transparent;
+  $text-input-md-highlight-color-valid: transparent;
+  $text-input-md-show-invalid-highlight: transparent;
+  $text-input-md-highlight-color: transparent;
+  $text-input-md-show-valid-highlight: transparent;
+
+  .form-username,
+  .form-access {
+    .item {
+      min-height: 0.5rem;
+    }
+
+    .label,
+    .text-input {
+      margin-left: 0;
+      min-height: 1rem;
+    }
+
+  }
+
+  .form-username {
+    .label,
+    .text-input {
+      margin-top: 0;
+      font-weight: 700;
+    }
+  }
+
+  .form-access {
+    margin-top: -15px;
+
+    .label,
+    .text-input {
+      margin: 4px 8px;
+      margin-left: 0;
+      font-size: 1.3rem;
+    }
+
+    .text-input {
+      font-weight: 500;
+      margin-left: 0px;
+    }
+  }
+
+  .item.item-input.ng-valid .item-inner {
+    box-shadow: none !important;
+  }
+
+  .label[stacked] {
+    font-size: 1.5rem;
+  }
+
+  .button {
+    text-transform: none;
+    padding: 0;
+    font-size: 1.5rem;
+    font-weight: normal;
+    display: block;
+    margin-top: 4px;
+  }
+
+  .button p {
+    margin: 10px 0;
+  }
+}
+
+.item-camp {
+  color: rgb(80, 80, 80);
+
+  ion-icon {
+    color: orangered;
+  }
+}
+
+.navBar {
+  height: 25vh; 
+
+  h2 {
+    margin-left: 10px;
+    color: white;
+  }
+}
+
+.usercube {
+  background-color: rgb(243, 243, 243);
+  color: color($colors, primary, base);
+  border: none;
+  box-shadow: none;
+  padding: 10px;
+  text-align: center;
+
+  ion-item {
+    border: none;
+    background: none;
+    color: color($colors, primary, base);
+    padding: 5px;
+  }
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+		<domain includeSubdomains="true">http://api.postmon.com.br/</domain>
+		<domain includeSubdomains="true">http://api.postmon.com.br/v1/cep/</domain>
+		<domain includeSubdomains="true">http://api.postmon.com.br/v1/</domain>
+		<domain includeSubdomains="true">api.postmon.com.br/v1</domain>
+		<domain includeSubdomains="true">api.postmon.com.br/v1/cep</domain>
+        <domain includeSubdomains="true">api.postmon.com.br/</domain>
+        <domain includeSubdomains="true">https://postmon.com.br/</domain>
+        <domain includeSubdomains="true">postmon.com.br/</domain>
+        <domain includeSubdomains="true">localhost</domain>
+		<domain includeSubdomains="true">http://apiv2.fixit-togo.com.br/api</domain>
+		<domain includeSubdomains="true">http://apiv2.fixit-togo.com.br/</domain>
+		<domain includeSubdomains="true">apiv2.fixit-togo.com.br</domain>
+		<domain includeSubdomains="true">apiv2.fixit-togo.com.br/api</domain>
+		<domain includeSubdomains="true">https://fix-it-api-lf7.conveyor.cloud/api</domain>
+		<domain includeSubdomains="true">https://fix-it-api-lf7.conveyor.cloud/</domain>
+		<domain includeSubdomains="true">fix-it-api-lf7.conveyor.cloud/</domain>
+		<domain includeSubdomains="true">fix-it-api-lf7.conveyor.cloud/api</domain>
+        <domain includeSubdomains="true">https://viacep.com.br/</domain>
+        <domain includeSubdomains="true">viacep.com.br/</domain>
+    </domain-config>
+</network-security-config>

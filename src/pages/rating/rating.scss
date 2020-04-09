@@ -1,0 +1,68 @@
+page-rating {
+  p {
+    text-align: center;
+    font-size: 1.6rem;
+  }
+
+  p.title {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    text-align: center; 
+    border-bottom: 1px solid #000; 
+    line-height: 0.1em;
+    margin: 20px 0 20px;
+  }
+
+  p.categorie {
+    font-size: 4rem;
+    color: #000;
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-top: 50px;
+  }
+
+  p.service-list {
+    margin-top: 0;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+  }
+
+  p span { 
+    background:#fff; 
+    padding:0 20px;
+  }
+
+  p.date {
+    font-size: 1.7rem;
+    font-weight: 500;
+    margin-top: 0;
+  }
+
+  img.minimap {
+    width: 100%;
+    height: 8vh;
+    object-fit: contain;
+    margin-top: 16px;
+  }
+
+  .rating {
+    font-size: 2.8rem;
+    color: #202020;
+    margin-bottom: 2vh;
+    margin-top: 0vh;
+  }
+
+  ion-footer {
+    padding: 16px;
+  }
+
+  ion-footer .toolbar-background {
+    border-color: transparent;
+    background: transparent;
+  }
+
+  .footer-md::before {
+    height: 0;
+  }
+
+}

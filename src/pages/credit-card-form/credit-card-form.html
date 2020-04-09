@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Cartão de Crédito</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="creditCardForm">
+    <ion-item>
+      <ion-label stacked>Nome completo</ion-label>
+      <ion-input type="text" formControlName="customerName"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Nome no cartão</ion-label>
+      <ion-input type="text" formControlName="holder"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label stacked>Número do cartão</ion-label>
+      <ion-input type="tel" formControlName="cardNumber"></ion-input>
+    </ion-item>
+    <ion-row>
+      <ion-item col-4>
+        <ion-label stacked>Mês</ion-label>
+        <ion-input type="tel" placeholder="MM" maxlength="2" formControlName="expirationMonth"></ion-input>
+      </ion-item>
+      <ion-item col-6>
+        <ion-label stacked>Ano</ion-label>
+        <ion-input type="tel" placeholder="YYYY" maxlength="4" formControlName="expirationYear"></ion-input>
+      </ion-item>
+      <ion-item col-4>
+        <ion-label stacked>cvc</ion-label>
+        <ion-input type="number" formControlName="securityCode"></ion-input>
+      </ion-item>
+    </ion-row>
+    <button ion-button block (tap)="addCreditCard()">Salvar</button>
+  </form>
+
+</ion-content>

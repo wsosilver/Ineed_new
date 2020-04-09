@@ -1,0 +1,69 @@
+page-starter {
+  img.logo {
+      width: auto;
+      margin: 0 auto;
+      margin-top: 5vh;
+      padding: 100px;
+      display: block;
+  }
+  
+  .scroll-content {
+      //background-image: url('../assets/imgs/background.png');
+      //background-size: cover;
+  }
+
+  .suptitle {
+    font-size: 18px;
+    font-weight: 800;
+    text-align: center;
+  }
+  
+  p {
+      margin-top: 16px;
+      font-weight: 400;
+      font-size: 1.5rem;
+      color: rgb(39, 39, 39);
+  }
+  
+  p.hint {
+      text-align: center;
+      margin-top: 24px;
+  }
+
+  p.text-login-options {
+    text-align: center
+  }
+
+  .icon {
+      font-size: 2.4rem;
+      color: rgb(39, 39, 39);
+  }
+
+  .btn-social-media {
+    margin-top: 2vh;
+  }
+
+  .orange {
+    color: orangered;
+  }
+
+  .mini-footer{
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    width: stretch;
+    margin-bottom: 5vh;
+  }
+
+  button {
+    box-shadow: unset !important;
+    border-radius: 5px !important;
+
+    ion-icon.facebook {
+      position: absolute;
+      left: 0;
+      margin-left: 15px;
+      color: white !important;
+    }
+  }
+}

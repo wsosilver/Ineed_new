@@ -1,0 +1,62 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+.tabs .tabbar {
+    background: #212121;
+}
+
+.tabs .tabbar .icon,
+.tabs .tabbar .tab-button-text {
+    color: #888;
+}
+
+.tabs .tab-button[aria-selected=true] .tab-button-icon,
+.tabs[tabsLayout=icon-top] .has-icon .tab-button-text {
+    color: #fff;
+}
+
+form .item {
+    padding-left: 0px;
+}
+
+form .button {
+    margin-top: 12px;
+}
+
+ion-thumbnail img {
+    object-fit: cover;
+}
+
+.text-input[disabled],
+.checkbox.checkbox-disabled,
+.datetime-disabled,
+.select-disabled {
+    opacity: 1;
+}
+
+textarea {
+    margin-left: 0px !important;
+}
+
+.datetime-disabled,
+.checkbox.checkbox-disabled,
+.item-select-disabled ion-label,
+.item-datetime-disabled ion-label,
+.item.item-checkbox-disabled ion-label,
+.alert-checkbox-group button[disabled], {
+    opacity: 1;
+}

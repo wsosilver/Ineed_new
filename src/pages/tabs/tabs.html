@@ -1,0 +1,9 @@
+<ion-tabs [selectedIndex]="categoriesTabIndex">
+  <ion-tab *ngFor="let tab of tabsList"
+    tabTitle="{{ tab.name }}"
+    tabIcon="{{ tab.icon }}"
+    [root]="tab.page"
+    [rootParams]="tab.params"
+    (ionSelect)="tab.action()">
+  </ion-tab>
+</ion-tabs>

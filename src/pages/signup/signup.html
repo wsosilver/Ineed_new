@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <img style="width: 100px" class="logo" src="assets/imgs/logo.png">
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+  <h3>Criar uma Conta</h3>
+
+  <form [formGroup]="signupForm">
+    <ion-item>
+      <ion-label>Nome</ion-label>
+      <ion-input type="text" formControlName="nome"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Repetir o e-mail</ion-label>
+      <ion-input type="email" formControlName="emailConfirmation"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Senha</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Repetir a senha</ion-label>
+      <ion-input type="password" formControlName="passwordConfirmation"></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label (tap)="openUseTerms()">Li e aceito os termos de uso</ion-label>
+      <ion-checkbox formControlName="useTerms"></ion-checkbox>
+    </ion-item>
+    <button class="submit-btn" ion-button block (tap)="send()">
+      Criar conta
+    </button>
+  </form>
+</ion-content>

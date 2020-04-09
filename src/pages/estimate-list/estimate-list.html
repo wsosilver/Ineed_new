@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Meus orçamentos</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="ionViewWillEnter()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+     
+  <ion-list>
+    <ion-item *ngFor="let estimate of estimateList" (tap)="openEstimateDetails(estimate)">
+      <ion-thumbnail item-start>
+        <img src="{{ imageStorage + '/' + estimate.solicitacao.imagem[0].valor }}" *ngIf="estimate.solicitacao.imagem.length">
+        <img src="assets/imgs/image-icon.png" *ngIf="!estimate.solicitacao.imagem.length">
+      </ion-thumbnail>
+      <h2>
+        {{ estimate.solicitacao.servicoSolicitacao[0].servico.categoria.valor }}
+        <span class="status">{{ estimate.status }}</span>
+      </h2>
+      <h3>{{ estimate.nomeCliente }}</h3>
+      <h3>{{ estimate.solicitacao.endereco }}</h3>
+      <h3>R$ {{ (estimate.maoObra + estimate.material).toFixed(2) }}</h3>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="getEstimates($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!visitId">Nova Visita</ion-title>
+    <ion-title *ngIf="visitId">Minha Visita</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3 class="categorie" *ngIf="categorie">{{ categorie.valor }}</h3>
+
+  <button ion-button small class="btn-service" *ngFor="let service of serviceList">
+    {{ service.nome }}
+  </button>
+
+  <form [formGroup]="visitForm">
+    <ion-item>
+      <ion-label>
+        <ion-icon name="create"></ion-icon>
+      </ion-label>
+      <ion-input type="number" placeholder="00,00" formControlName="price" [disabled]="visitId || true"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data</ion-label>
+      <ion-datetime
+        displayFormat="DD/MM/YYYY"
+        cancelText="Cancelar"
+        doneText="OK"
+        formControlName="date"
+        [disabled]="visitId || urgent">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Horário</ion-label>
+      <ion-datetime
+        displayFormat="HH:mm"
+        cancelText="Cancelar"
+        minuteValues="0,30"
+        doneText="OK"
+        formControlName="time"
+        [disabled]="visitId">
+      </ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>Colaboradores</ion-label>
+      <ion-select
+        multiple="true"
+        formControlName="colaboratorList"
+        okText="OK" cancelText="Cancelar">
+          <ion-option *ngFor="let colaborator of colaboratorList" value="{{ colaborator.id}}">
+            {{ colaborator.nome }}
+          </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Confirmado</ion-label>
+      <ion-checkbox item-right disabled formControlName="paid"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Concluido</ion-label>
+      <ion-checkbox item-right disabled formControlName="finished"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-textarea type="text" rows="6" placeholder="Observacoes" formControlName="observation" [disabled]="visitId"></ion-textarea>
+    </ion-item>
+    <button class="login-btn" ion-button block (tap)="scheduleVisit()" *ngIf="userProvider.user.profile == 2 && !visitId">
+      Agendar visita
+    </button>
+    <button
+      class="login-btn" ion-button block
+      (tap)="concludeVisit()"
+      [disabled]="visitForm.value.finished"
+      *ngIf="userProvider.user.profile == 2 && visitForm.value.paid">
+        Concluir visita
+    </button>
+    <button
+      class="login-btn" ion-button block
+      (tap)="createEstimate()"
+      [disabled]="!visitForm.value.paid || !visitForm.value.finished"
+      *ngIf="userProvider.user.profile == 2 && !hasEstimate">
+        Criar orçamento
+    </button>
+    <button class="login-btn" ion-button block (tap)="confirmVisit()" [disabled]="visitForm.controls.paid.value" *ngIf="userProvider.user.profile == 1">
+      Confirmar visita
+    </button>
+    <button class="login-btn"
+      ion-button block
+      (tap)="rateVisit()"
+      *ngIf="userProvider.user.profile == 1 && visitForm.controls.finished.value && !avaliationId">
+        Avaliar visita
+    </button>
+    
+  </form>
+</ion-content>

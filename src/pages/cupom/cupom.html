@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Desconto</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="discount-group">
+      <p class="title">Compartilhar seu código</p>
+    <p class="description">Compartilhe seu código com um amigo, vocês ganham 10% de desconto nas suas próximas solicitações.</p>
+    <ion-input type="text" disabled [(ngModel)]="userDiscountCode"></ion-input>
+    <button ion-button block (tap)="shareDiscount()">Compartilhar</button>  
+  </div>
+
+  <div class="discount-group">
+    <p class="title">Ganhou um desconto?</p>
+    <p class="description">Ganhou um código de desconto de algum amigo? Valide o cupom aqui para receber descontos nas próximas solicitações.</p>
+    <ion-input type="text" [(ngModel)]="sharedDiscountCode"></ion-input>
+    <button ion-button block (tap)="activateDiscount()">Ativar</button>  
+  </div>
+</ion-content>

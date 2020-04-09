@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Minhas visitas</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="ionViewWillEnter()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let visit of visitList" (tap)="openVisitDetails(visit)">
+      <ion-thumbnail item-start>
+        <img src="{{ imageStorage + '/' + visit.solicitacao.imagem[0].valor }}" *ngIf="visit.solicitacao.imagem.length">
+        <img src="assets/imgs/image-icon.png" *ngIf="!visit.solicitacao.imagem.length">
+      </ion-thumbnail>
+      <h2>
+        {{ visit.solicitacao.servicoSolicitacao[0].servico.categoria.valor }}
+        <span class="status">{{ visit.status }}</span>
+      </h2>
+      <h3>{{ visit.solicitacao.nomeCliente }}</h3>
+      <h3>{{ visit.solicitacao.endereco }}</h3>
+      <h3>{{ visit.dataVisita }}</h3>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="getVisitList($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

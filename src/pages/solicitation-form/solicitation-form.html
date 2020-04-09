@@ -1,0 +1,145 @@
+<ion-header no-border>
+  <ion-navbar style="height: 80px">
+    <ion-title *ngIf="!solicitationId">Nova Solicitação</ion-title>
+    <ion-title *ngIf="solicitationId">Minha Solicitação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <form [formGroup]="solicitationForm">
+    <div class="address" padding>
+      <h3 class="categorie" *ngIf="categorie">{{ categorie.valor }}</h3>
+      
+      <button ion-button small class="btn-service" *ngFor="let service of serviceList">
+        <h3>{{ service.nome }}</h3>
+        <ion-icon name="close"></ion-icon>
+      </button>
+      
+      <hr>
+
+      <ion-item *ngIf="solicitationId">
+        <ion-label>
+          <!-- <ion-icon name="pin"></ion-icon> -->
+          <h3 style="color: orangered">COD:. {{ solicitationId }}</h3>
+        </ion-label>
+      </ion-item>
+
+      <hr>
+      <ion-item>
+        <ion-label>
+          <!-- <ion-icon name="pin"></ion-icon> -->
+          <h3 style="color: orangered">Sua Localização</h3>
+        </ion-label>
+        <ion-textarea type="text" formControlName="address" [disabled]="solicitationId" rows="2"></ion-textarea>
+      </ion-item>
+      
+      <div class="client-data" *ngIf="userProvider.user.profile == USER_ROLES.PROVIDER">
+        <ion-item *ngIf="clientData.name" no-lines>
+          <ion-label>
+            <ion-icon name="contact"></ion-icon>
+          </ion-label>
+          <ion-textarea type="text" value="{{clientData.name}}" [disabled]="solicitationId" rows="1"></ion-textarea>
+        </ion-item>
+  
+        <ion-item *ngIf="clientData.tel">
+          <ion-label>
+            <ion-icon name="call"></ion-icon>
+          </ion-label>
+          <ion-textarea type="text" value="{{clientData.tel}}" [disabled]="solicitationId" rows="1"></ion-textarea>
+        </ion-item>
+      </div>
+  
+      <ion-item>
+        <ion-label>Tipo de Endereço</ion-label>
+        <ion-select okText="OK" cancelText="Cancelar" formControlName="location">
+          <ion-option *ngFor="let location of locationTypes" [value]="location.id" [disabled]="solicitationId">
+            {{ location.name }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+    </div>
+
+    <div class="time" padding>
+      <h3 class="visit-preferences" *ngIf="categorie">Quero ser visitado em...</h3>
+      <ion-item>
+        <ion-label>Data</ion-label>
+        <ion-datetime
+          min="2018"
+          displayFormat="DD/MM/YYYY"
+          cancelText="Cancelar"
+          doneText="OK"
+          formControlName="startDate"
+          [disabled]="solicitationId">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Horário inicial</ion-label>
+        <ion-datetime
+          displayFormat="HH:mm"
+          cancelText="Cancelar"
+          minuteValues="0,30"
+          doneText="OK"
+          formControlName="startTime"
+          [disabled]="solicitationId">
+        </ion-datetime>
+      </ion-item>
+      <ion-item>
+        <ion-label>Horário final</ion-label>
+        <ion-datetime
+          displayFormat="HH:mm"
+          cancelText="Cancelar"
+          minuteValues="0,30"
+          doneText="OK"
+          formControlName="finishTime"
+          [disabled]="solicitationId">
+        </ion-datetime>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Cliente fornecendo o material</ion-label>
+        <ion-toggle
+          item-right formControlName="provideMaterial"
+          [disabled]="solicitationId"
+          (ionChange)="setAsProvideMaterial()">
+        </ion-toggle>
+      </ion-item>
+
+      <ion-item no-lines>
+        <ion-label>Urgente</ion-label>
+        <ion-toggle item-right formControlName="urgent" disabled>
+        </ion-toggle>
+      </ion-item>
+      
+      <ion-item class="item-images" no-lines>
+        <ion-label>
+          <ion-icon name="attach"></ion-icon>
+          Anexar imagens
+        </ion-label>
+      </ion-item>
+      <div class="images">
+        <img
+          *ngFor="let image of imageList; let i = index;"
+          [src]="showImage(image)"
+          (tap)="handleImage(i)">
+        <img src="assets/imgs/more-icon.jpg" (tap)="selectImageSource()" *ngIf="!solicitationId || imageList.length == 0">
+      </div>
+      <ion-item>
+        <ion-textarea type="text" rows="6" formControlName="observation" placeholder="Observacoes" [disabled]="solicitationId">
+        </ion-textarea>
+      </ion-item>
+      <button class="login-btn" ion-button block (tap)="createSolicitation()" [disabled]="solicitationId" *ngIf="userProvider.user.profile == 1 && !schedule">
+        Criar Solicitação
+      </button>
+      <button class="login-btn" ion-button block (tap)="scheduleVisit()" [disabled]="!solicitationId" *ngIf="userProvider.user.profile == 2 && !schedule">
+        Agendar visita
+      </button>
+      <button class="login-btn" ion-button block (tap)="openVisitDetails()" *ngIf="schedule">
+        Visualizar visita
+      </button>
+      <button class="login-btn" ion-button block (tap)="openEstimateDetails()" *ngIf="estimate">
+        Visualizar orçamento
+      </button>      
+    </div>
+  </form>
+
+</ion-content>

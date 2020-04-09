@@ -1,0 +1,82 @@
+page-profile .form-username .item,
+page-profile .form-access .item {
+  min-height: 0.5rem;
+}
+page-profile .form-username .label,
+page-profile .form-username .text-input,
+page-profile .form-access .label,
+page-profile .form-access .text-input {
+  margin-left: 0;
+  min-height: 1rem;
+}
+page-profile .form-username .label,
+page-profile .form-username .text-input {
+  margin-top: 0;
+}
+page-profile .form-username {
+  margin-bottom: -25px;
+  margin-left: 80px;
+}
+page-profile .form-access {
+  margin-top: 8px;
+  margin-left: 80px;
+}
+page-profile .form-access .label,
+page-profile .form-access .text-input {
+  margin: 4px 8px;
+  margin-left: 0;
+  font-size: 1.3rem;
+}
+page-profile .form-access .text-input {
+  font-weight: 500;
+  margin-left: 0px;
+}
+page-profile .item.item-input.ng-valid .item-inner {
+  box-shadow: none !important;
+}
+page-profile .label[stacked] {
+  font-size: 1.5rem;
+}
+page-profile .button {
+  text-transform: none;
+  padding: 0;
+  font-size: 1.5rem;
+  font-weight: normal;
+  display: block;
+  margin-top: 4px;
+}
+page-profile .button p {
+  margin: 10px 0;
+}
+.item-camp {
+  color: #505050;
+}
+.item-camp ion-icon {
+  color: orangered;
+}
+.navBar {
+  height: 19vh;
+}
+.navBar h2 {
+  margin-left: 10px;
+  color: white;
+}
+.usercube {
+  background-color: #ececec;
+  color: orangered;
+  border: none;
+  box-shadow: none;
+  padding: 10px;
+  text-align: center;
+}
+.usercube ion-item {
+  border: none;
+  background: none;
+  color: white;
+  padding: 5px;
+}
+.usercube img {
+  float: left;
+  margin-left: 20px;
+  border-radius: 6px;
+}

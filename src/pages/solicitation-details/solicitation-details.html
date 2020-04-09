@@ -1,0 +1,180 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Detalhes da Solicitação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-segment [(ngModel)]="selectedPage" (ionChange)="segmentChanged()" padding>
+    <ion-segment-button value="visit">Visita</ion-segment-button>
+    <ion-segment-button value="estimate">Orçamento</ion-segment-button>
+  </ion-segment>
+
+  <div class="summary">
+    
+    <div class="colaborators-list" *ngIf="selectedPage == 'visit'">
+      <div class="colaborator" *ngFor="let item of visitData.colaborators">
+        <img  src="{{ item.imagemUrl }}" >
+        <p>{{ item.nome }}</p>
+      </div>
+    </div>
+    
+    <div class="colaborators-list" *ngIf="selectedPage == 'estimate'">
+      <div class="colaborator" *ngFor="let item of estimateData.colaborators">
+        <img  src="{{ item.imagemUrl }}" >
+        <p>{{ item.nome }}</p>
+      </div>
+    </div>
+
+    <p class="categorie">{{ solicitationData.categorie }}</p>
+    <p class="services">
+      <span *ngFor="let service of solicitationData.services">{{ service }}</span>
+    </p>
+  </div>
+
+  <div class="visit" *ngIf="selectedPage == 'visit'">
+    <div class="status">
+      Status: <span>{{ visitData.status }}</span>
+    </div>
+
+    <div class="base-data">
+      <div class="item">
+        <ion-icon name="pin"></ion-icon>
+        {{ solicitationData.address }}
+      </div>
+      <div class="item">Horário <span>{{ visitData.startDate }}</span></div>
+      <div class="item">Confirmado 
+        <span *ngIf="visitData.confirmed">Sim</span>
+        <span *ngIf="!visitData.confirmed">Não</span>
+      </div>
+      <div class="item" *ngIf="visitData.urgentValue > 0">
+        Urgente <span>Adicional R$ {{ visitData.urgentValue }}</span>
+      </div>
+      <div class="item observations" *ngIf="visitData.observations">
+        Observações
+        <p>{{ visitData.observations }}</p>
+      </div>
+
+      <!-- Formas de pagamento -->
+      <div *ngIf="visitData.urgentValue > 0">
+        <ion-item class="credit-card payment-options" no-lines>
+          <ion-label>Forma de pagamento</ion-label>
+          <ion-select
+            [(ngModel)]="visitData.paymentOption"
+            [disabled]="visitData.confirmed || visitData.transacao"
+            (ionChange)="checkPaymentMethod()">
+              <ion-option *ngFor="let item of paymentOptions" value="{{ item.id }}">
+                {{ item.name }}
+              </ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="credit-card" no-lines *ngIf="visitData.paymentOption == 2 && visitData.transacao">
+          <ion-label>Status</ion-label>
+          <ion-select disabled [(ngModel)]="visitData.transacao.status">
+            <ion-option value="1">Aguardando Pagamento</ion-option>
+            <ion-option value="2">Em Análise</ion-option>
+            <ion-option value="3">Paga</ion-option>
+            <ion-option value="4">Disponível</ion-option>
+            <ion-option value="5">Em Disputa</ion-option>
+            <ion-option value="6">Devolvida</ion-option>
+            <ion-option value="7">Cancelada</ion-option>
+            <ion-option value="8">Debitado</ion-option>
+            <ion-option value="9">Retenção Temporaria</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item class="credit-card" no-lines *ngIf="visitData.paymentOption == 1">
+          <ion-label>Cartão de Crédito</ion-label>
+          <ion-select [(ngModel)]="visitData.creditCardId" [disabled]="visitData.confirmed">
+            <ion-option value="{{creditCard.id}}" *ngFor="let creditCard of visitData.creditCardList">
+              **** {{ creditCard.number }}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </div>
+      <!-- END: Formas de pagamento -->
+    </div>
+  </div>
+  
+  <div class="estimate" *ngIf="selectedPage == 'estimate'">
+    <div class="status">
+      Status: <span>{{ estimateData.status }}</span>
+    </div>
+    <div class="base-data">
+      <div class="item">Serviço <span>R$ {{ estimateData.labor }}</span></div>
+      <div class="item">Material Fornecido <span>R$ {{ estimateData.material }}</span></div>
+      <div class="item" *ngIf="discountTax">
+        Desconto <span> - R$ {{ discountValue }}</span>
+      </div>
+      <div class="item" (tap)="openCupomPage()" *ngIf="!discountTax">
+        Possui cupom?
+      </div>
+      <div class="item">Total
+        <span *ngIf="estimateData.total">R$ {{ (estimateData.total - discountValue).toFixed(2) }}</span>
+        <span *ngIf="!estimateData.total">R$ 0</span>
+      </div>
+      <div class="item observations" *ngIf="estimateData.observations">
+        Observações
+        <p>{{ estimateData.observations }}</p>
+      </div>
+    </div>
+    <div class="extra-price" *ngIf="estimateData.total > 0.00">
+      <ion-item class="credit-card payment-options" no-lines>
+        <ion-label>Forma de pagamento</ion-label>
+        <ion-select
+          [(ngModel)]="estimateData.paymentOption"
+          [disabled]="estimateData.confirmed || estimateData.transacao"
+          (ionChange)="checkPaymentMethod()">
+            <ion-option *ngFor="let item of paymentOptions" value="{{ item.id }}">
+              {{ item.name }}
+            </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="credit-card" no-lines *ngIf="estimateData.paymentOption == 2 && estimateData.transacao">
+        <ion-label>Status</ion-label>
+        <ion-select disabled [(ngModel)]="estimateData.transacao.status">
+          <ion-option value="1">Aguardando Pagamento</ion-option>
+          <ion-option value="2">Em Análise</ion-option>
+          <ion-option value="3">Paga</ion-option>
+          <ion-option value="4">Disponível</ion-option>
+          <ion-option value="5">Em Disputa</ion-option>
+          <ion-option value="6">Devolvida</ion-option>
+          <ion-option value="7">Cancelada</ion-option>
+          <ion-option value="8">Debitado</ion-option>
+          <ion-option value="9">Retenção Temporaria</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="credit-card" no-lines *ngIf="estimateData.paymentOption == 1">
+        <ion-label>Parcelas</ion-label>
+        <ion-select [(ngModel)]="estimateData.installments" [disabled]="estimateData.confirmed">
+          <ion-option value="{{number}}" *ngFor="let number of maxInstallments">
+            {{ number }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item class="credit-card" no-lines *ngIf="estimateData.paymentOption == 1">
+        <ion-label text-wrap>Cartão de Crédito</ion-label>
+        <ion-select [(ngModel)]="estimateData.creditCardId" [disabled]="estimateData.confirmed">
+          <ion-option *ngIf="estimateData.creditCardList.length == 0">****</ion-option>
+          <ion-option value="{{creditCard.id}}" *ngFor="let creditCard of estimateData.creditCardList">
+            **** {{ creditCard.number }}
+          </ion-option>
+        </ion-select>
+      </ion-item>
+      <div class="item" *ngIf="extraTax.length">Taxa adicional <span>R$ {{ extraTax[0].valor }}</span></div>
+    </div>
+  </div>
+
+  <div padding class="actions">
+    <button ion-button block (tap)="callAction()" *ngIf="button.enabled">
+      {{ button.name }}
+    </button>
+    <button ion-button block color="light" (tap)="cancelSolicitation()">
+      Cancelar
+    </button>
+  </div>
+</ion-content>

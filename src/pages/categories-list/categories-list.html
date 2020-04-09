@@ -1,0 +1,39 @@
+<ion-header style="z-index: 10" no-border>
+  <div class="header-orange">
+      Que tipo de serviço <br> você quer solicitar?
+  </div>
+
+  <!-- <div class="contextwithtext">
+    <b class="orange" style="font-size: 1.5em">
+      Usuário Teste <ion-icon name="create"></ion-icon>
+    </b>
+
+    <p><ion-icon name="pin"></ion-icon> Texto de teste!</p>
+  </div> -->
+</ion-header>
+
+<ion-content class="card-background-page">
+  <!-- <ion-card>
+    <ion-card-content class="card-subtitle">
+      <div class="card-subtitle">Que tipo de serviço você quer solicitar?</div>
+    </ion-card-content>
+  </ion-card> -->
+
+  <!-- <ion-searchbar
+    (ionInput)="filterCategories($event)"
+    placeholder="Pesquisar por serviço">
+  </ion-searchbar> -->
+
+  <div class="categories-list" align="left">
+    <ion-card class="categories-item"
+      *ngFor="let categorie of filteredCategorieList"
+      (tap)="openServiceList(categorie.id)">
+        <img src="{{ imageStorage + '/' + categorie.imagem }} ">
+        <div class="fileid">
+          <p class="title" style="font-size: 12px"><b>{{ categorie.valor | uppercase }}</b></p>
+        </div>
+    </ion-card>
+  </div>
+
+  <br>
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Meus cartões</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="ionViewWillEnter()">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list no-lines>
+    <ion-item *ngFor="let creditCard of creditCardList">
+      <ion-thumbnail item-start>
+        <img src="assets/imgs/credit-card.png">
+      </ion-thumbnail>
+      <h2>**** **** **** {{ creditCard.number }}</h2>
+      <button ion-button clear item-end (tap)="removeCreditCard(creditCard.id)">
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-list>
+
+  <ion-fab left bottom>
+    <button ion-fab (tap)="openAddCreditCardPage()">
+      <ion-icon name="add"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-infinite-scroll (ionInfinite)="getCreditCards($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

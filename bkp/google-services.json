@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "936657266703",
+    "firebase_url": "https://ineed-aa990.firebaseio.com",
+    "project_id": "ineed-aa990",
+    "storage_bucket": "ineed-aa990.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936657266703:android:1041485adbf1458bffdb7a",
+        "android_client_info": {
+          "package_name": "br.com.prolins.ineed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936657266703-b9081rbs2f5gc3iogbqfefs1egfpj8gp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.prolins.ineed",
+            "certificate_hash": "ca06b6a2236458044a0eb99a0b865f4778c94a44"
+          }
+        },
+        {
+          "client_id": "936657266703-ed3r18o8porl5080oi4ssn6n76qaasnt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRDCFlTOmqA_HMlX_KtAlndscxeEq_jTc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936657266703-ed3r18o8porl5080oi4ssn6n76qaasnt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

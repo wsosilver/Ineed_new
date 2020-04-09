@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Filtrar Solicitação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="filterForm">
+    <ion-item>
+      <ion-label>Código</ion-label>
+      <ion-input type="number" formControlName="id"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Cliente</ion-label>
+      <ion-input type="text" formControlName="nomeCliente"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Endereço</ion-label>
+      <ion-input type="text" formControlName="endereco"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Categoria</ion-label>
+      <ion-select okText="OK" cancelText="Cancelar" formControlName="categoriaId" (ionChange)="getServices()">
+        <ion-option *ngFor="let categorie of categorieList" [value]="categorie.id">
+          {{ categorie.valor }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Serviço</ion-label>
+      <ion-select okText="OK" cancelText="Cancelar" formControlName="servicoId" [disabled]="!serviceList.length">
+        <ion-option *ngFor="let service of serviceList" [value]="service.id">
+          {{ service.nome }}
+        </ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Exibir Cancelados</ion-label>
+      <ion-toggle formControlName="exibirCancelados"></ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Exibir Concluidos</ion-label>
+      <ion-toggle formControlName="exibirConcluidos"></ion-toggle>
+    </ion-item>
+
+    <button ion-button (tap)="filter()">Filtrar</button>
+    <button ion-button color="light" (tap)="cancel()">Limpar</button>
+    
+  </form>
+
+</ion-content>

@@ -1,0 +1,32 @@
+page-signin {
+  // .scroll-content {
+  //   background-image: url('../assets/imgs/backgroud-transparent.png');
+  //   background-size: contain;
+  //   background-repeat: no-repeat;
+  //   background-position: bottom;
+  // }
+
+  .login-form {
+    margin-top: 20vh;
+  }
+
+  .login-btn {
+    margin: 8px auto;
+    width: 87%;
+    box-shadow: unset !important;
+    border-radius: 5px !important;
+  }
+
+  .forgot-password {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #898989;
+    
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+
+  .item {
+    padding-left: 0px;
+  }
+}

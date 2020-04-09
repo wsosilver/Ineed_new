@@ -1,0 +1,14 @@
+<ion-header no-border>
+  <ion-navbar style="height: 10vh">
+    <ion-title>{{ attrib }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="attribForm">
+    <ion-item>
+      <ion-input type={{inputType}} placeholder={{attrib}} formControlName="attribValue" [brmasker]="brmasker"></ion-input>
+    </ion-item>
+    <button ion-button block [disabled]="attribForm.invalid" (tap)="update()">Salvar</button>
+  </form>
+</ion-content>

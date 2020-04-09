@@ -1,0 +1,8 @@
+Firebase
+
+Android ultiliza: br.com.prolins.ineed
+Ios ultiliza: br.com.prolins.fixitToGo
+
+* É altamente recomendado que você crie um novo projeto no firebase 
+e atualize os bundles, para que você tenha maior controle na hora de
+fazer o push.

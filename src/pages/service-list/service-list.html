@@ -1,0 +1,32 @@
+<ion-header style="z-index: 10" no-border>
+    <div class="header-orange">
+      Que tipo de serviço <br> você quer solicitar?
+    </div>
+  
+    <div class="contextwithtext">
+      <b class="orange" style="font-size: 1.5em">
+        {{categorie.valor}}
+      </b>
+  
+      <p>Selecione o que você deseja solicitar.</p>
+    </div>
+  </ion-header>
+<ion-content> <br><br><br>
+  <!-- <ion-card class="hint">Qual o seu problema ?</ion-card> -->
+
+  <div class="service"
+    [ngClass]="{'service-selected': service.selected }"
+    *ngFor="let service of serviceList"
+    (tap)="addService(service)">
+      <p class="name">{{ service.nome }}</p>
+      <p class="description">{{ service.descricao }}</p>
+  </div>
+
+</ion-content>
+
+<ion-footer padding>
+  <button ion-button block (click)="openSolicitationForm()" [disabled]="!selectedServiceList.length">
+    Continuar
+  </button>
+</ion-footer>
+

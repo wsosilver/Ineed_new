@@ -1,0 +1,39 @@
+page-signup {
+
+  // .scroll-content {
+  //   background-image: url('../assets/imgs/backgroud-transparent.png');
+  //   background-size: contain;
+  //   background-repeat: no-repeat;
+  //   background-position: bottom;
+  // }
+
+  form {
+    margin-top: 5vh;
+  }
+
+  form .item {
+    padding-left: 8px;
+  }
+
+  .grid {
+    padding-left: 0px;
+  }
+
+  .grid .row .col {
+    padding-left: 0px;
+  }
+
+  .submit-btn {
+    margin: 8px auto;
+    width: 87%;
+  }
+
+  .btn-signup p {
+    margin-top: 16px;
+    margin-left: 4px;
+  }
+
+  ion-checkbox .item-cover {
+    display: none;
+  }
+}

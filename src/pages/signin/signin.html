@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Entrar com sua Conta</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form class="login-form" [formGroup]="loginForm">
+    <ion-item>
+      <ion-label>E-mail</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label>Senha</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+
+    <h2 class="forgot-password" (tap)="openForgotPasswordPage()">Esqueceu sua senha?</h2>
+    
+    <button class="login-btn" ion-button block (tap)="login()">Entrar</button>
+  </form>
+</ion-content>

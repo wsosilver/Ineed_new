@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>936657266703-bbls1hvmmhasmuh5735kf0v8ideqpk7v.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.936657266703-bbls1hvmmhasmuh5735kf0v8ideqpk7v</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>936657266703-b9081rbs2f5gc3iogbqfefs1egfpj8gp.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyD8D5ZQi9nGL9HDDy7n8xWmHG0469ozsuE</string>
+	<key>GCM_SENDER_ID</key>
+	<string>936657266703</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>br.com.prolins.ineed</string>
+	<key>PROJECT_ID</key>
+	<string>ineed-aa990</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ineed-aa990.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:936657266703:ios:8bc989e41c06f5f1ffdb7a</string>
+	<key>DATABASE_URL</key>
+	<string>https://ineed-aa990.firebaseio.com</string>
+</dict>
+</plist>

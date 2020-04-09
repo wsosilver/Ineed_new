@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "401161892688",
+    "firebase_url": "https://fix-it-37fe5.firebaseio.com",
+    "project_id": "fix-it-37fe5",
+    "storage_bucket": "fix-it-37fe5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:401161892688:android:7e0c429101bde62f",
+        "android_client_info": {
+          "package_name": "br.com.prolins.fixitToGo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "401161892688-jceio4svk4latbfiakgcgc8ddshgfite.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLrKYZ2lKnnjK-5Dy_E9en48oIAatRiWs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

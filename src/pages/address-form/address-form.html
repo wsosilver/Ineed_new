@@ -1,0 +1,40 @@
+<ion-header no-border>
+  <ion-navbar style="height: 10vh">
+    <ion-title>Endereço</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="addressForm">
+    <ion-item>
+      <ion-label>CEP</ion-label>
+      <ion-input type="tel" formControlName="cep" (ionBlur)="getAddress()"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Endereço</ion-label>
+      <ion-input type="text" formControlName="endereco"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Número</ion-label>
+      <ion-input type="text" formControlName="numero"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Complemento</ion-label>
+      <ion-input type="text" formControlName="complemento"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>UF</ion-label>
+      <ion-select formControlName="uf">
+        <ion-option value="{{ state }}" *ngFor="let state of stateList">{{ state }}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cidade</ion-label>
+      <ion-input type="text" formControlName="cidade"></ion-input>
+    </ion-item>
+    <button ion-button block class="btn-signup" [disabled]="addressForm.invalid" (tap)="save()">
+      <p>Salvar</p>
+    </button>
+  </form>
+
+</ion-content>

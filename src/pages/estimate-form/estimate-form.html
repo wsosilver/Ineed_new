@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title *ngIf="!estimateId">Novo Orçamento</ion-title>
+    <ion-title *ngIf="estimateId">Meu Orçamento</ion-title>
+    <ion-buttons *ngIf="estimateId && userProvider.user.profile == UserRoles.PROVIDER" end>
+      <button ion-button icon-only (click)="presentPopover($event)">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="estimateForm">
+    <ion-item>
+      <ion-label>Serviço</ion-label>
+      <ion-input type="number" formControlName="labor" placeholder="R$ 0,00" [disabled]="estimateId && !updateEstimate">
+      </ion-input>
+    </ion-item>
+    <ion-item *ngIf="!hasMaterial">
+      <ion-label>Material</ion-label>
+      <ion-input type="number" formControlName="material" placeholder="R$ 0,00" [disabled]="estimateId && !updateEstimate">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Colaboradores</ion-label>
+      <ion-select
+        multiple="true"
+        formControlName="colaboratorList"
+        okText="OK" cancelText="Cancelar">
+          <ion-option *ngFor="let colaborator of colaboratorList" value="{{ colaborator.id}}">
+            {{ colaborator.nome }}
+          </ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="extraTax.length">
+      <ion-label>Taxa Extra</ion-label>
+      <ion-input type="number" placeholder="R$ 0,00" disabled value="{{ extraTax[0].valor }}">
+      </ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Data de Entrega</ion-label>
+      <ion-datetime
+        displayFormat="DD/MM/YYYY"
+        cancelText="Cancelar"
+        doneText="OK"
+        formControlName="deliveryDate"
+        [disabled]="estimateId && !updateEstimate">
+      </ion-datetime>
+    </ion-item>
+    <div *ngIf="userProvider.user.profile != 1">
+      <ion-item class="item-images" no-lines *ngIf="estimateForm.value.paid">
+        <ion-label>Anexar imagens</ion-label>
+      </ion-item>
+      <div class="images" *ngIf="estimateForm.value.paid">
+        <img
+          *ngFor="let image of imageList; let i = index;"
+          [src]="domSanitizationService.bypassSecurityTrustUrl(image)"
+          (tap)="handleImage(i)">
+        <img src="assets/imgs/more-icon.jpg" (tap)="selectImageSource()" *ngIf="!estimateForm.value.finished || imageList.length == 0">
+      </div>
+    </div>
+    <ion-item>
+      <ion-label>Concluido</ion-label>
+      <ion-checkbox item-right formControlName="finished" disabled></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-label>Confirmado</ion-label>
+      <ion-checkbox item-right formControlName="paid" disabled></ion-checkbox>
+    </ion-item>
+    <ion-item *ngIf="extraTax.length">
+      <ion-label>Taxa Extra Confirmada</ion-label>
+      <ion-checkbox item-right disabled checked="{{ extraTax[0].pago }}"></ion-checkbox>
+    </ion-item>
+    <ion-item>
+      <ion-textarea
+        type="text"
+        rows="6"
+        formControlName="observation"
+        placeholder="Observacoes" 
+        [disabled]="estimateId && !updateEstimate">
+      </ion-textarea>
+    </ion-item>
+    <ion-item *ngIf="userProvider.user.profile == 2 && estimateForm.value.paid">
+      <ion-textarea
+        type="text" rows="6" placeholder="Diário de Obra"
+        formControlName="constructionJournal"
+        [disabled]="estimateId && estimateForm.value.finished">
+      </ion-textarea>
+    </ion-item>
+    <div class="btn-collaborator" *ngIf="userProvider.user.profile == UserRoles.PROVIDER">
+      <button
+        class="login-btn" ion-button block
+        (tap)="showExtraTaxAlert()"
+        [disabled]="extraTax.length || estimateForm.value.finished"
+        *ngIf="estimateId && estimateForm.value.paid">
+          Taxa Adicional
+      </button>
+      <button
+        class="login-btn" ion-button block
+        (tap)="concludeEstimate()"
+        [disabled]="!estimateForm.value.paid || estimateForm.value.finished">
+          Concluir Orçamento
+      </button>
+      <button class="login-btn" ion-button block
+        (tap)="createEstimate()"
+        [disabled]="estimateId"
+        *ngIf="!estimateId">
+          Criar Orçamento
+      </button>
+      <button class="login-btn" ion-button block
+        (tap)="saveEstimate()"
+        *ngIf="estimateId && updateEstimate == true">
+          Salvar
+      </button>
+    </div>
+  </form>
+</ion-content>
