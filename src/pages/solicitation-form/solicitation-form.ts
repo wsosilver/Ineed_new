@@ -358,6 +358,7 @@ export class SolicitationFormPage {
   }
 
   createSolicitation() {
+    debugger
     if(!this.checkUserData())
       return
 

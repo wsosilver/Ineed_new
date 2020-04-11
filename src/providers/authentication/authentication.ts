@@ -1,4 +1,4 @@
-import { HttpClient, HttpEvent } from '@angular/common/http';
+import { HttpClient, HttpEvent,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Platform, AlertController } from 'ionic-angular';
 
@@ -37,6 +37,15 @@ export class AuthenticationProvider {
     this.androidPermission = this.androidPermissions.PERMISSION.READ_PHONE_STATE
   }
 
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Accept':  'application/json',
+    }),
+  }
+  
+  
+
   public getData() {
     const url = `${this.apiUrl}/usuario/listar`
     const params = HttpFactory.getRequestOptions({ Authorization: this.userProvider.user.token })
@@ -51,7 +60,12 @@ export class AuthenticationProvider {
     return response
   }
   
+
   public signup(signupForm) {    
+    debugger
+  
+   
+
     const url = `${this.apiUrl}/usuario/cadastrar`
     const body = this.initSignupData(signupForm)
     const params = HttpFactory.getRequestOptions()
@@ -138,7 +152,9 @@ export class AuthenticationProvider {
   
   public signin(email, password) {    
     const promise = this.getDeviceId().then(deviceID => {
+      
       return this.getFcmToken().then(fcmToken => {
+        debugger
         const url = `${this.apiUrl}/login`
         const body = JSON.stringify({ email, senha: password, fcmToken })
         const params = HttpFactory.getRequestOptions({ 'Device': deviceID })

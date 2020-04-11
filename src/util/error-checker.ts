@@ -4,7 +4,7 @@ import { Translator } from './translator';
 export class ErrorChecker {
   public static getErrorMessage(response, toastCtlr: ToastController = null) {
     console.log(response)
-
+    debugger
     let error_message = ''
 
     if (response.error && response.error.hasOwnProperty('error'))
