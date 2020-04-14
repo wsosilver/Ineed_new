@@ -24,6 +24,7 @@ export class CategoriesListPage implements OnInit {
   }
 
   ngOnInit() {
+    
     this.getCategories()
     console.log('ionViewDidLoad CategoriesListPage');
   }
@@ -32,19 +33,47 @@ export class CategoriesListPage implements OnInit {
     this.getCategories()
     console.log('ionViewDidLoad CategoriesListPage');
   }  
+
+  //metodo de chamada anterior
   
-  getCategories() {
+  /*getCategories_() {
+    
     const loading = this.loadingCtrl.create({ content: 'Obtendo categorias', dismissOnPageChange: true })
     
     loading.present()
-      .then(() => this.servicesProvider.getCategories())
+      .then(() => {
+        this.servicesProvider.getCategoriess()
+      })
       .then((response: any) => {
+        debugger
         this.categorieList = response.categoria
         this.filteredCategorieList = this.categorieList
       })
       .catch(error => ErrorChecker.getErrorMessage(error, this.toastCtrl))
       .then(() => loading.dismiss().catch(() => {}))
+  }*/
+
+  getCategories(){
+   
+      this.categorieList = [];
+      this.servicesProvider.getCategories().subscribe((data) =>{
+        for (let index = 0; index < data.categoria.length; index++) {
+          
+         let category = {
+            id: Number(data.categoria[index]['id']),
+            valor: data.categoria[index]['valor'],
+            imagem: data.categoria[index]['imagem'],
+            inativo: data.categoria[index]['inativo']
+        }
+        this.categorieList.push(category);
+        }
+      })
+  
+  
   }
+
+
+
 
   openServiceList(categoryId) {
     this.navCtrl.push('ServiceListPage', { categoryId: categoryId })

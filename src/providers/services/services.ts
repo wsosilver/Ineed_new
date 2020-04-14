@@ -23,19 +23,29 @@ export class ServicesProvider {
     console.log('Hello ServicesProvider Provider');
   }
 
-  public getCategories() {
+ /* public getCategories() {
     const url = `${this.apiUrl}/categoria`
     const params = HttpFactory.getRequestOptions({ Authorization: `${this.userProvider.user.token}` })
     const request: Observable<HttpEvent<any>> = this.http.get<any>(url, params)
 
     const response = new Promise((resolve, reject) => {
+      debugger
       request.subscribe(
         data => resolve(data),
         error => reject(error))
     })
-    
     return response
+  }*/
+
+  public getCategories() : any {
+    const url = `${this.apiUrl}/categoria`
+    const params = HttpFactory.getRequestOptions({ Authorization: `${this.userProvider.user.token}` })
+
+
+    return this.http.get(url,params);
+ 
   }
+
 
   public getServicesType(categorieId) {
     const url = `${this.apiUrl}/tipoServico?id=${categorieId}`

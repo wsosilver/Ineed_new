@@ -81,7 +81,6 @@ export class SignupPage {
   }
 
   send(){
-    debugger
     const errors = ErrorChecker.getFormError(this.signupForm.controls, this.toastCtrl)
     
     if(errors.length > 0)
@@ -92,7 +91,6 @@ export class SignupPage {
 
     this.authProvider.signup(this.signupForm.value)
     .then((data: any) => {
-      debugger
       this.showMessage(data.message)
       this.navCtrl.pop()
     })

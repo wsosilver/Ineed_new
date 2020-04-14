@@ -12,6 +12,7 @@ export class ServiceListPage {
   categorie = {}
   serviceList = []
   selectedServiceList = []
+  categorieTest: any[] = []
 
   constructor(
     public navCtrl: NavController,
@@ -26,18 +27,32 @@ export class ServiceListPage {
     this.getCategorie()
     this.getServices(categoryId)
   }
-  
-  getCategorie() {
+
+  getCategorie(){
     const categorieId = this.navParams.get('categoryId')
+
+    this.servicesProvider.getCategories().subscribe((data) =>{
+      const categorieIndex = data.categoria.findIndex(categoria => categoria.id == categorieId)
+      this.categorie = data.categoria[categorieIndex]
+
+      console.warn(this.categorie)
+    })
+  }
+
+  // metodo anterior
+  /*getCategorie_() {
+    const categorieId = this.navParams.get('categoryId')
+    debugger
     this.servicesProvider.getCategories()
       .then((data: any) => {
+        debugger
         const categorieIndex = data.categoria.findIndex(categoria => categoria.id == categorieId)
         this.categorie = data.categoria[categorieIndex]
 
         console.warn(this.categorie)
       })
       .catch(error => ErrorChecker.getErrorMessage(error, this.toastCtrl))
-    }
+    }*/
     
   getServices(categoryId) {
     this.servicesProvider.getServices(categoryId)

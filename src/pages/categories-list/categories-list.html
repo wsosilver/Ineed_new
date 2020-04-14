@@ -26,7 +26,7 @@
 
   <div class="categories-list" align="left">
     <ion-card class="categories-item"
-      *ngFor="let categorie of filteredCategorieList"
+      *ngFor="let categorie of categorieList"
       (tap)="openServiceList(categorie.id)">
         <img src="{{ imageStorage + '/' + categorie.imagem }} ">
         <div class="fileid">

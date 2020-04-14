@@ -62,7 +62,6 @@ export class AuthenticationProvider {
   
 
   public signup(signupForm) {    
-    debugger
   
    
 
@@ -154,7 +153,6 @@ export class AuthenticationProvider {
     const promise = this.getDeviceId().then(deviceID => {
       
       return this.getFcmToken().then(fcmToken => {
-        debugger
         const url = `${this.apiUrl}/login`
         const body = JSON.stringify({ email, senha: password, fcmToken })
         const params = HttpFactory.getRequestOptions({ 'Device': deviceID })

@@ -55,10 +55,16 @@ export class SolicitationListFilterPage {
     }
   }
 
-  getCategories() {
+ /* getCategories_() {
     this.servicesProvider.getCategories()
       .then((data: any) => this.categorieList = data.categoria)
       .catch(error => ErrorChecker.getErrorMessage(error, this.toastCtrl))
+  }*/
+
+  getCategories(){
+    this.servicesProvider.getCategories().subscribe((data) =>{
+      this.categorieList = data.categoria
+    })
   }
 
   getServices() {
