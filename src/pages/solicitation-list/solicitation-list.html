@@ -35,8 +35,10 @@
     <span class="cod" [style.background-color]="getElementColor(solicitation.status)">{{ solicitation.status }}</span>
     <!-- <span class="cod">COD: {{ solicitation.id }}</span> -->
     <div class="orange-block">
-      <img class=""
-        src="{{ imageStorage + '/' + solicitation.servicoSolicitacao[0].servico.categoria.imagem }}">
+     <!-- <img class=""
+        src="{{ imageStorage + '/' + solicitation.servicoSolicitacao[0].servico.categoria.imagem }}">-->
+        <img src="{{  './assets/icons/' + solicitation.servicoSolicitacao[0].servico.categoria.imagem }} ">
+
       <h3 class="tag-category" style="font-size: 14px; margin-top: 7px">{{ solicitation.servicoSolicitacao["0"].servico.categoria.valor }}</h3>
     </div>
     <span class="tag-service" *ngFor="let service of solicitation.servicoSolicitacao">

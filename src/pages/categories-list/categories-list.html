@@ -28,7 +28,8 @@
     <ion-card class="categories-item"
       *ngFor="let categorie of categorieList"
       (tap)="openServiceList(categorie.id)">
-        <img src="{{ imageStorage + '/' + categorie.imagem }} ">
+      <!--  <img src="{{ imageStorage + '/' + categorie.imagem }} "> -->
+      <img src="{{  './assets/icons/' + categorie.imagem }} ">
         <div class="fileid">
           <p class="title" style="font-size: 12px"><b>{{ categorie.valor | uppercase }}</b></p>
         </div>
