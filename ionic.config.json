@@ -2,6 +2,7 @@
   "name": "ineed",
   "type": "ionic-angular",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "capacitor": {}
   }
 }
